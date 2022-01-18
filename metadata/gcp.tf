@@ -1,7 +1,9 @@
 provider "google" {
-  project = "airy-totality-151318"
+  project = var.project
   zone    = "us-central1-c"
 }
+
+variable "project" { type = string }
 
 resource "google_compute_instance" "meta" {
   name         = "meta"
