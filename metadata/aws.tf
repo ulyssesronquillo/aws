@@ -24,10 +24,10 @@ resource "aws_spot_instance_request" "meta" {
   subnet_id                   = var.subnet
   security_groups             = var.sg
   associate_public_ip_address = "true"
-  user_data                   = <<-EOF
-              #!/bin/bash
-              hostnamectl set-hostname meta
-              EOF
+  user_data                   = <<EOF
+#!/bin/bash
+hostnamectl set-hostname meta
+EOF
   tags = {
     Name = "meta"
   }
