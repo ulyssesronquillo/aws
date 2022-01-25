@@ -15,6 +15,17 @@ resource "google_compute_instance" "meta" {
     }
   }
 
+  tags = ["http-server"]
+
+  metadata_startup_script = <<EOF
+#!/bin/bash
+hostnamectl set-hostname test
+dnf install nginx -y
+systemctl start nginx
+systemctl enable nginx
+sleep 10
+echo "web1" > /usr/share/nginx/html/index.html
+EOF
   scheduling {
     preemptible       = true
     automatic_restart = false

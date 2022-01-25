@@ -26,7 +26,12 @@ resource "aws_spot_instance_request" "meta" {
   associate_public_ip_address = "true"
   user_data                   = <<EOF
 #!/bin/bash
-hostnamectl set-hostname meta
+hostnamectl set-hostname test
+dnf install nginx -y
+systemctl start nginx
+systemctl enable nginx
+sleep 10
+echo "web1" > /usr/share/nginx/html/index.html
 EOF
   tags = {
     Name = "meta"
