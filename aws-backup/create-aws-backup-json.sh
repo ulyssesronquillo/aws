@@ -13,34 +13,34 @@ create_vault () {
 
 create_backup_plans () {
 	aws backup create-backup-plan \
-		--profile $profile \
-		--region $region \
-		--cli-input-json file://efs-0000-backup.json
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-0000-backup.json
 
 	aws backup create-backup-plan \
-		--profile $profile \
-		--region $region \
-		--cli-input-json file://efs-0400-backup.json
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-0400-backup.json
 	
 	aws backup create-backup-plan \
-		--profile $profile \
-		--region $region \
-		--cli-input-json file://efs-0800-backup.json
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-0800-backup.json
 
 	aws backup create-backup-plan \
-		--profile $profile \
-		--region $region \
-		--cli-input-json file://efs-1200-backup.json
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-1200-backup.json
 
 	aws backup create-backup-plan \
-		--profile $profile \
-		--region $region \
-		--cli-input-json file://efs-1600-backup.json
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-1600-backup.json
 
 	aws backup create-backup-plan \
-		--profile $profile \
-		--region $region \
-		--cli-input-json file://efs-2000-backup.json
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-2000-backup.json
 
 }
 
@@ -56,40 +56,40 @@ get_plan_ids () {
 create_backup_selections () {
 
 	aws backup create-backup-selection \
-		--backup-plan-id $plan1 \
-                --profile $profile \
-                --region $region \
-		--cli-input-json file://efs-0000-selection.json
+	--backup-plan-id $plan1 \
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-0000-selection.json
 
 	aws backup create-backup-selection \
-		--backup-plan-id $plan2 \
-		--profile $profile \
-                --region $region \
-		--cli-input-json file://efs-0400-selection.json
+	--backup-plan-id $plan2 \
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-0400-selection.json
 
 	aws backup create-backup-selection \
-		--backup-plan-id $plan3 \
-                --profile $profile \
-                --region $region \
-		--cli-input-json file://efs-0800-selection.json
+	--backup-plan-id $plan3 \
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-0800-selection.json
 
 	aws backup create-backup-selection \
-		--backup-plan-id $plan4 \
-                --profile $profile \
-                --region $region \
-		--cli-input-json file://efs-1200-selection.json
+	--backup-plan-id $plan4 \
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-1200-selection.json
 
 	aws backup create-backup-selection \
-		--backup-plan-id $plan5 \
-                --profile $profile \
-                --region $region \
-		--cli-input-json file://efs-1600-selection.json
+	--backup-plan-id $plan5 \
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-1600-selection.json
 
 	aws backup create-backup-selection \
-		--backup-plan-id $plan6 \
-		--profile $profile \
-		--region $region \
-		--cli-input-json file://efs-2000-selection.json
+	--backup-plan-id $plan6 \
+	--profile $profile \
+	--region $region \
+	--cli-input-json file://efs-2000-selection.json
 }
 
 get_account_id
@@ -144,5 +144,5 @@ done
 
 create_backup_selections
 
-sleep 5
+sleep 3
 rm -f *.json
