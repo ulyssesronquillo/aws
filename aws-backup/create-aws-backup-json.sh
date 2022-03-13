@@ -45,48 +45,48 @@ create_backup_plans () {
 }
 
 get_plan_ids () {
-	plan1=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-0000'].BackupPlanId" --profile $profile --region $region --output text)
-	plan2=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-0400'].BackupPlanId" --profile $profile --region $region --output text)
-	plan3=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-0800'].BackupPlanId" --profile $profile --region $region --output text)
-	plan4=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-1200'].BackupPlanId" --profile $profile --region $region --output text)
-	plan5=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-1600'].BackupPlanId" --profile $profile --region $region --output text)
-	plan6=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-2000'].BackupPlanId" --profile $profile --region $region --output text)
+	p1=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-0000'].BackupPlanId" --profile $profile --region $region --output text)
+	p2=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-0400'].BackupPlanId" --profile $profile --region $region --output text)
+	p3=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-0800'].BackupPlanId" --profile $profile --region $region --output text)
+	p4=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-1200'].BackupPlanId" --profile $profile --region $region --output text)
+	p5=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-1600'].BackupPlanId" --profile $profile --region $region --output text)
+	p6=$(aws backup list-backup-plans --query "BackupPlansList[?BackupPlanName=='efs-2000'].BackupPlanId" --profile $profile --region $region --output text)
 }
 
 create_backup_selections () {
 
 	aws backup create-backup-selection \
-	--backup-plan-id $plan1 \
+	--backup-plan-id $p1 \
 	--profile $profile \
 	--region $region \
 	--cli-input-json file://efs-0000-selection.json
 
 	aws backup create-backup-selection \
-	--backup-plan-id $plan2 \
+	--backup-plan-id $p2 \
 	--profile $profile \
 	--region $region \
 	--cli-input-json file://efs-0400-selection.json
 
 	aws backup create-backup-selection \
-	--backup-plan-id $plan3 \
+	--backup-plan-id $p3 \
 	--profile $profile \
 	--region $region \
 	--cli-input-json file://efs-0800-selection.json
 
 	aws backup create-backup-selection \
-	--backup-plan-id $plan4 \
+	--backup-plan-id $p4 \
 	--profile $profile \
 	--region $region \
 	--cli-input-json file://efs-1200-selection.json
 
 	aws backup create-backup-selection \
-	--backup-plan-id $plan5 \
+	--backup-plan-id $p5 \
 	--profile $profile \
 	--region $region \
 	--cli-input-json file://efs-1600-selection.json
 
 	aws backup create-backup-selection \
-	--backup-plan-id $plan6 \
+	--backup-plan-id $p6 \
 	--profile $profile \
 	--region $region \
 	--cli-input-json file://efs-2000-selection.json
